@@ -7,21 +7,20 @@
       */
 
       const changeTitle = function (newTitle) {
-        let pageTitle = document.getElementById("titlePage")
-		pageTitle = newTitle
+        const pageTitle = document.getElementById("titlePage");
+		    pageTitle.innerText = newTitle;
       };
-      console.log(changeTitle('Change-me'))
       /* EXERCISE 2
       Write a function for changing the class of the title of the page in "myHeading".
       */
 
       const addClassToTitle = function () {
         //
-        let element = document.getElementById("titlePage")
-        element.classList.add("otherclass");
+        const element = document.getElementById("titlePage")
+        element.classList.add("otherclass")
       };
 
-      addClassToTitle()
+      
 
       /* EXERCISE 3
       Write a function for changing the text of only the p which are children of a div.
@@ -29,10 +28,9 @@
 
       const changePcontent = function () {
         let changeTextP = document.querySelector("div p")
-        changeTextP = "yes, chnage the text"
+        changeTextP.innerText = "yes, chnage the text"
       };
 
-      changePcontent()
 
       /* EXERCISE 4
       Write a function for changing the destination of every link to https://www.google.com
@@ -40,6 +38,8 @@
 
       const changeUrls = function () {
         //
+        const changeURL = document.getElementById("link")
+        changeURL.setAttribute("href","https://www.google.com")
       };
 
       /* EXERCISE 5
@@ -48,6 +48,11 @@
 
       const addToTheSecond = function (content) {
         //
+        const newlist = document.getElementById("secondList")
+        let newSecondLiItem = document.createElement('li')
+       // newSecondLiItem = 'hello i am new in tag'
+        newSecondLiItem.innerText= content
+        newlist.append(newSecondLiItem)
       };
 
       /* EXERCISE 6
@@ -56,7 +61,11 @@
 
       const addParagraph = function (content) {
         //
-      };
+        const div = document.querySelectorAll("div")[0];
+        let newP = document.createElement('p')
+        newP.innerText = content
+        div.append(newP)
+    };
 
       /* EXERCISE 7
       Write a function for making the first UL disappear.
@@ -64,6 +73,8 @@
 
       const firstUlDisappear = function () {
         //
+        const firstUiList = document.getElementById("firstList");
+        firstUiList.hidden = true;
       };
 
       /* EXERCISE 8
@@ -72,6 +83,8 @@
 
       const paintItGreen = function () {
         //
+        const greenClass = document.getElementById("secondList");
+        greenClass.classList.add("green-paint");
       };
 
       /* EXERCISE 9
@@ -80,6 +93,8 @@
 
       const makeItClickable = function () {
         //
+        const changeHeading = document.getElementById("titlePage")
+        changeHeading.addEventListener("click", function(){changeHeading.style.color('red','green')})
       };
 
       /* EXERCISE 10
@@ -103,20 +118,35 @@
 
       window.onload = function () {
         //
+        console.log('page just finished loading!')
+        changeTitle('hello New title')
+        addClassToTitle()
+        changePcontent()    
+        changeUrls()
+        addToTheSecond("hello! I am created dynamically")
+        addParagraph("Hello, I am new Paragraph.")
+        firstUlDisappear ()
+        paintItGreen()
+        makeItClickable()
       };
 
       /* EXERCISE 13
       Use HTML5 tags to divide the content of the page in a more semantic way.
       */
 
-      window.onload = function() {
-    console.log('page just finished loading!')
-  }
+      window.onload ()
+    
+  
     </script>
 
     <style>
       .myHeading {
         color: red;
+      }
+      .green-paint{
+          border: 2px solid green;
+          background-color: green;
+          color: white;
       }
     </style>
   <script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script></head>
@@ -141,7 +171,7 @@
         <li>3rd</li>
       </ul>
 
-      <a href="https://s3.eu-west-1.amazonaws.com/eduflow-production/activity-resources/strive.school">This link goes to Strive School</a>
+      <a id="link" href="https://s3.eu-west-1.amazonaws.com/eduflow-production/activity-resources/strive.school">This link goes to Strive School</a>
 
       <div>
         <p>This text is just for the exercise</p>
